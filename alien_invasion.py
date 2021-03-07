@@ -3,20 +3,21 @@ import sys
 import pygame
 
 class AlienInvasion:
-    #Overall class to manage game assets and bahvior.
+    """Overall class to manage game assets and bahvior."""
 
     def __init__(self):
-        #Initializes the game, and create game resources.
+        """Initializes the game, and create game resources."""
         pygame.init()
+        self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((1200, 800))
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
         #set background color.
         self.bg_color = (230, 230, 230)
 
     def run_game(self):
-        #Start the main loop for the game.
+        """Start the main loop for the game."""
         while True:
             #Watch for keyboard and mouse events. event listener loop
             for event in pygame.event.get():
@@ -24,7 +25,7 @@ class AlienInvasion:
                     sys.exit()
 
             #redraw the screen during each pass through the loop.
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
                 
             #Make the most recently drawn screen visible. display changes after event listener loop above
             pygame.display.flip()
