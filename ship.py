@@ -9,6 +9,8 @@ class Ship:
         """Initialize the ship and set its starting position."""
         #assign screen to instance of ship so all instances can access
         self.screen = ai_game.screen
+        self.settings = ai_game.settings
+
         #places ships in correct screen location
         self.screen_rect = ai_game.screen.get_rect()
 
@@ -19,16 +21,23 @@ class Ship:
         #start each new ship at the bottom center of the screen.
         self.rect.midbottom = self.screen_rect.midbottom
 
-        #movement flag
+        #store a decimal value for the ship's horizontal position.
+        self.x = float(self.rect.x)
+
+        #movement flags
         self.moving_right = False
         self.moving_left = False
 
     def update(self):
         """Update the ship's position based on the movement flag"""
+        #update the ship's x value, not the rect
         if self.moving_right:
-            self.rect.x += 1
+            self.x += self.settings.ship_speed
         if self.moving_left:
-            self.rect.x -= 1
+            self.x -= self.settings.ship_speed
+
+        #update rect object from self.x
+        self.rect.x = self.x
 
     def blitme(self):
         """Draw the ship at its current location(specified by self.rect)."""
