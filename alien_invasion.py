@@ -13,8 +13,16 @@ class AlienInvasion:
         pygame.init()
         self.settings = Settings()
 
+        #windowed mode
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
+
+        """
+        #fullscreen
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.settings.screen_width = self.screen.get_rect().width
+        self.settings.screen_height = self.screen.get_rect().height
+        """
 
         #create instance of ship after screen has been created, giving it access to the game's resources with (self) parameter
         self.ship = Ship(self)
