@@ -19,6 +19,6 @@ class Ship:
         #start each new ship at the bottom center of the screen.
         self.rect.midbottom = self.screen_rect.midbottom
 
-    def blitme(self)
+    def blitme(self):
         """Draw the ship at its current location(specified by self.rect)."""
         self.screen.blit(self.image, self.rect)
