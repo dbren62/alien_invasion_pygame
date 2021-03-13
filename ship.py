@@ -1,12 +1,14 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship:
+class Ship(Sprite):
     """A class to manage the ship."""
 
     #two parameters: self referene and reference to the current instance of the AlienInvasion class (gives ship access to
     # all AlienInvasion game resources)
     def __init__(self, ai_game):
         """Initialize the ship and set its starting position."""
+        super().__init__()
         #assign screen to instance of ship so all instances can access
         self.screen = ai_game.screen
         self.settings = ai_game.settings
